@@ -1,0 +1,77 @@
+<%- include('./adminHeader.ejs')%>
+<%- include('./navigationBar.ejs') %>
+
+<div class="col-sm-12" >
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                <tr>
+                    <% Object.keys(data).forEach(function(key) { %>
+                        <th><%= key %></th>
+                    <% }); %>
+                </tr>
+                </thead>
+                <tbody>
+                <% if (Object.values(data)[0]) { %>
+                    <% for(let i = 0; i < Object.values(data)[0].length; i++) { %>
+                        <tr>
+                            <% Object.keys(data).forEach(function(key) { %>
+                                <td>
+                                    <% if(key !== 'cart') { %>
+                                        <%= data[key][i] %>
+                                    <% } else { %>
+                                        <ul>
+                                            <% Object.keys(data[key][i]).forEach(function(subKey) { %>
+                                                <li>
+                                                    <%= subKey %>:
+                                                    <% if (typeof data[key][i][subKey] === 'object') { %>
+                                                        <ul>
+                                                            <% Object.keys(data[key][i][subKey]).forEach(function(subSubKey) { %>
+                                                                <li> <%= data[key][i][subKey][subSubKey] %></li>
+                                                            <% }); %>
+                                                        </ul>
+                                                    <% } else { %>
+                                                        <%= data[key][i][subKey] %>
+                                                    <% } %>
+                                                </li>
+                                            <% }); %>
+                                        </ul>
+                                    <% } %>
+                                </td>
+                            <% }); %>
+                        </tr>
+                    <% } %>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+

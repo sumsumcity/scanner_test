@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  app:
+    container_name: app
+    restart: always
+    user: "1001" # Run as non-root user.
+    ports:
+      - "3000:${PORT}"
+    depends_on:
+      - mongodb
+    build:
+      context: .
+    networks:
+      - node-webapp-network
+    volumes:
+      - logs:/app/lib/mini-waf/logs
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASS}
+    # ports:
+      # - ${DB_PORT}:${DB_PORT} # comment for production
+    volumes:
+      - db:/data/db
+    networks:
+      - node-webapp-network
+
+networks:
+  node-webapp-network:
+    driver: bridge
+
+volumes:
+  db:
+    driver: local
+  logs:
+    driver: local

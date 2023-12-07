@@ -1,0 +1,36 @@
+<%- include('./adminHeader.ejs')%>
+
+
+<%- include('./navigationBar.ejs') %>
+
+<div class="container">
+    <h2>Edit User "<%=user['username']%>"</h2>
+    <!-- Flash message -->
+    <% if(errorMsg !=null && errorMsg.length>0) {%>
+    <div id="flash-msg" class="alert alert-danger">
+        <%=errorMsg %>
+    </div>
+    <%}%>
+    <form action="/a0MNAc/user/<%=user['_id']%>" method="POST">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" value="<%=user['username']%>">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" value="<%=user['email']%>">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <input type="hidden" name="userid" value="<%=user['_id']%>" />
+        <input type="hidden" name="usermail" value="<%=user['email']%>" />
+        <button type="submit" class="btn btn-primary">OK</button>
+        <a href="/a0MNAc/panel/users" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+
+</html>
