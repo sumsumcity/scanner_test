@@ -28,7 +28,7 @@
     "express-validator": "^6.14.0",
     "faker": "^4.1.0",
     "helmet": "^7.0.0",
-    "http-errors": "~1.6.3",
+    "http-errors": "~1.8.1",
     "ip": "^1.1.8",
     "mapbox-gl": "^1.13.2",
     "moment": "^2.29.3",
