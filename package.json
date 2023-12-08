@@ -33,7 +33,7 @@
     "mapbox-gl": "^1.13.2",
     "moment": "^2.29.3",
     "mongoose": "^5.13.14",
-    "mongoose-aggregate-paginate-v2": "^1.0.6",
+    "mongoose-aggregate-paginate-v2": "^1.0.42",
     "mongoose-slug-updater": "^3.3.0",
     "morgan": "~1.9.1",
     "nodemailer": "^6.7.3",
